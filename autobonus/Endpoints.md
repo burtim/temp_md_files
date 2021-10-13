@@ -37,7 +37,7 @@ POST (Регистрация Менеджера и организации)
   "organizationINN": "string",
   "organizationPhoneNumber": "string",
   "organizationEmail": "user@example.com",
-  "confirmDataPageUrl": "string"
+  "confirmDataPageUrl": "https://autobonus.ru/confirm"
 }
 
 отдает если произошла ошибка валидации или не отправилось письмо
@@ -169,7 +169,7 @@ GET (Получение данных профиля пользователя)
 }
 ```
 
-### api/user/profile
+###api/user/profile
 PUT (Изменение данных профиля пользователя)
 ```json
 Получает
@@ -186,3 +186,92 @@ PUT (Изменение данных профиля пользователя)
 200 Ok || 400 BadRequest
 ```
 
+###api/service-station
+POST (Создание СТО)
+```json
+Получает
+{
+  "name": "СТО у Ашота",
+  "address": "г.Ставрополь, ул.Ленина 154",
+  "phoneNumber": "89123456789",
+  "email" : "ashot@stostav.ru" //Необязательно
+}
+
+отдает
+200 Ok || 400 BadRequest
+```
+
+###api/service-station
+POST (Создание СТО)
+```json
+Получает
+{
+  "name": "СТО у Ашота",
+  "address": "г.Ставрополь, ул.Ленина 154",
+  "phoneNumber": "89123456789",
+  "email" : "ashot@stostav.ru" //Необязательно
+}
+
+отдает
+200 Ok || 400 BadRequest
+```
+
+###api/service-station/{stationId?}
+GET (Получение СТО или списка всех СТО)
+```json
+отдает все СТО если не указывать {stationId}
+[
+  {
+    "id": 2,
+    "name": "СТО Routeam",
+    "address": "г.Ставрополь, ул.Пушкина 12/2",
+    "phoneNumber": "89123456789"
+  },
+  {
+    "id": 5,
+    "name": "СТО у Ашота",
+    "address": "г.Ставрополь, ул.Ленина 154",
+    "phoneNumber": "89123456789",
+    "email": "ashot@stostav.ru"
+  },
+  {
+    "id": 7,
+    "name": "СТО у Ашота",
+    "address": "г.Ставрополь, ул.Ленина 154",
+    "phoneNumber": "89123456789"
+  }
+]
+
+Если указать {stationId} отдает массив с одним элементом
+Например: {{base_url}}/api/service-station/7 запрос отдает
+[
+    {
+    "id": 7,
+    "name": "СТО у Ашота",
+    "address": "г.Ставрополь, ул.Ленина 154",
+    "phoneNumber": "89123456789"
+    }
+]
+```
+
+###api/service-station/{stationId}
+PUT (изменение данных СТО)
+```json
+Получает
+{
+  "name": "СТО у Сереги",
+  "phoneNumber": "89123456789",
+  "email" : "serega@stostav.ru"
+}
+
+отдает
+200 Ok || 400 BadRequest
+```
+
+
+###api/service-station/{stationId}
+DELETE (удаление данных СТО)
+```json
+отдает
+200 Ok || 400 BadRequest
+```
