@@ -182,7 +182,7 @@ GET (Получение данных профиля пользователя)
 }
 ```
 
-###api/user/profile
+### api/user/profile
 PUT (Изменение данных профиля пользователя)
 ```json
 Получает
@@ -205,7 +205,7 @@ PUT (Изменение данных профиля пользователя)
 ---
 ## CRUD СТО
 
-###api/service-station
+### api/service-station
 POST (Создание СТО)
 ```json
 Получает
@@ -220,7 +220,7 @@ POST (Создание СТО)
 200 Ok || 400 BadRequest
 ```
 
-###api/service-station/{stationId?}
+### api/service-station/{stationId?}
 GET (Получение СТО или списка всех СТО)
 ```json
 отдает все СТО если не указывать {stationId}
@@ -258,7 +258,7 @@ GET (Получение СТО или списка всех СТО)
 ]
 ```
 
-###api/service-station/{stationId}
+### api/service-station/{stationId}
 PUT (изменение данных СТО)
 ```json
 Получает
@@ -273,7 +273,7 @@ PUT (изменение данных СТО)
 ```
 
 
-###api/service-station/{stationId}
+### api/service-station/{stationId}
 DELETE (удаление данных СТО)
 ```json
 отдает
