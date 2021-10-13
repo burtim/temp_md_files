@@ -1,5 +1,8 @@
 #Endpoints AutoBonus
 
+---
+## Аккаунт
+
 ###/ api / account / login
 POST (Авторизация пользователя)
 ```json
@@ -14,60 +17,6 @@ POST (Авторизация пользователя)
   "userId": int,
   "userName": "string", 
   "token" : "string",
-  "refreshToken": "string"
-}
-```
-
-### /api/account/registration/manager
-POST (Регистрация Менеджера и организации)
-Описание рпегистрации: Менеджер сначала заполняет данные о себе, 
-затем переходит на вторую страницу и заполняет информацию
-о своей организации. Нажимает на Submit и все данные летят на сервер
-
-```json
-На вход принимает
-{
-  "userEmail": "user@example.com",
-  "userPassword": "string",
-  "userPasswordConfirm": "string",
-  "userFirstName": "string",
-  "userLastName": "string",
-  "userPatronymic": "string",
-  "organizationName": "string",
-  "organizationINN": "string",
-  "organizationPhoneNumber": "string",
-  "organizationEmail": "user@example.com",
-  "confirmDataPageUrl": "https://autobonus.ru/confirm"
-}
-
-отдает если произошла ошибка валидации или не отправилось письмо
-{
-  "error": "description"
-}
-
-Если письмо подтверждения отправлено и валидация пройдена, то отдает
-{
-  "success" : "description"
-}
-```
-### api/account/registration/manager-confirm
-POST (Подтверждение регистрации при переходе по ссылке)
-В ссылке в __GET__ параметрах будет параметр __token__.
-Пользователь на странице вводит свой пароль, который он указывал при регистрации
-(На случай если при регистрации он укажет ошибочный Email и 
-другой человек не смог подтвердить его регистрацию)
-```json
-На вход принимает
-{
-  "password": "string",
-  "token": "string"
-}
-
-Отдает
-{
-  "userId": 0,
-  "userName": "string",
-  "token": "string",
   "refreshToken": "string"
 }
 ```
@@ -121,6 +70,67 @@ __hash__ параметр будет в ссылке на почте, брать
 200
 ```
 
+---
+## Регистрация менеджера
+
+### /api/account/registration/manager
+POST (Регистрация Менеджера и организации)
+Описание рпегистрации: Менеджер сначала заполняет данные о себе,
+затем переходит на вторую страницу и заполняет информацию
+о своей организации. Нажимает на Submit и все данные летят на сервер
+
+```json
+На вход принимает
+{
+  "userEmail": "user@example.com",
+  "userPassword": "string",
+  "userPasswordConfirm": "string",
+  "userFirstName": "string",
+  "userLastName": "string",
+  "userPatronymic": "string",
+  "organizationName": "string",
+  "organizationINN": "string",
+  "organizationPhoneNumber": "string",
+  "organizationEmail": "user@example.com",
+  "confirmDataPageUrl": "https://autobonus.ru/confirm"
+}
+
+отдает если произошла ошибка валидации или не отправилось письмо
+{
+  "error": "description"
+}
+
+Если письмо подтверждения отправлено и валидация пройдена, то отдает
+{
+  "success" : "description"
+}
+```
+### api/account/registration/manager-confirm
+POST (Подтверждение регистрации при переходе по ссылке)
+В ссылке в __GET__ параметрах будет параметр __token__.
+Пользователь на странице вводит свой пароль, который он указывал при регистрации
+(На случай если при регистрации он укажет ошибочный Email и
+другой человек не смог подтвердить его регистрацию)
+```json
+На вход принимает
+{
+  "password": "string",
+  "token": "string"
+}
+
+Отдает
+{
+  "userId": 0,
+  "userName": "string",
+  "token": "string",
+  "refreshToken": "string"
+}
+```
+
+
+---
+## Профиль организации
+
 ### api/organization
 GET (Получение данных организации для текущего пользователя)
 ```json
@@ -152,6 +162,9 @@ PUT (Изменение данных организации)
 200 OK || 400 BadRequest
 ```
 
+---
+## Профиль пользователя
+
 ### api/user/profile
 GET (Получение данных профиля пользователя)
 ```json
@@ -169,7 +182,7 @@ GET (Получение данных профиля пользователя)
 }
 ```
 
-### api/user/profile
+###api/user/profile
 PUT (Изменение данных профиля пользователя)
 ```json
 Получает
@@ -186,7 +199,13 @@ PUT (Изменение данных профиля пользователя)
 200 Ok || 400 BadRequest
 ```
 
-### api/service-station
+
+
+
+---
+## CRUD СТО
+
+###api/service-station
 POST (Создание СТО)
 ```json
 Получает
@@ -201,7 +220,7 @@ POST (Создание СТО)
 200 Ok || 400 BadRequest
 ```
 
-### api/service-station
+###api/service-station
 POST (Создание СТО)
 ```json
 Получает
@@ -216,7 +235,7 @@ POST (Создание СТО)
 200 Ok || 400 BadRequest
 ```
 
-### api/service-station/{stationId?}
+###api/service-station/{stationId?}
 GET (Получение СТО или списка всех СТО)
 ```json
 отдает все СТО если не указывать {stationId}
@@ -254,7 +273,7 @@ GET (Получение СТО или списка всех СТО)
 ]
 ```
 
-### api/service-station/{stationId}
+###api/service-station/{stationId}
 PUT (изменение данных СТО)
 ```json
 Получает
@@ -269,9 +288,10 @@ PUT (изменение данных СТО)
 ```
 
 
-### api/service-station/{stationId}
+###api/service-station/{stationId}
 DELETE (удаление данных СТО)
 ```json
 отдает
 200 Ok || 400 BadRequest
 ```
+---
