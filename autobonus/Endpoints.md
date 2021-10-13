@@ -220,21 +220,6 @@ POST (Создание СТО)
 200 Ok || 400 BadRequest
 ```
 
-###api/service-station
-POST (Создание СТО)
-```json
-Получает
-{
-  "name": "СТО у Ашота",
-  "address": "г.Ставрополь, ул.Ленина 154",
-  "phoneNumber": "89123456789",
-  "email" : "ashot@stostav.ru" //Необязательно
-}
-
-отдает
-200 Ok || 400 BadRequest
-```
-
 ###api/service-station/{stationId?}
 GET (Получение СТО или списка всех СТО)
 ```json
