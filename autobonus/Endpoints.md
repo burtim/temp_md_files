@@ -1,5 +1,11 @@
 #Endpoints AutoBonus
 
+## JWT Authorization header
+~~~
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidGltb2ZleWJ1cmt1c2hAZ21haWwuY29tIiwianRpIjoiNjRjYTYyZDMtMjg5OS00NDYyLTliMmYtNTU0MDQ3M2ExYzA4IiwidXNlcklkIjoiMiIsImVtYWlsIjoidGltb2ZleWJ1cmt1c2hAZ21haWwuY29tIiwib3JnYW5pemF0aW9uSWQiOiIxIiwicm9sZXMiOiJjbGllbnQsbWFuYWdlciIsImV4cCI6MTYzNDI4Mjg1MywiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1OTMzNyIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTkzMzcifQ.LLS3ysLfFar0esd8fOqQsJC1A5SkBox3TmhCIncoDjk' \
+~~~
+
+
 ---
 ## Аккаунт
 
