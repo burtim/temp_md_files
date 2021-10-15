@@ -286,3 +286,86 @@ DELETE (удаление данных СТО)
 200 Ok || 400 BadRequest
 ```
 ---
+
+## Справочник Марки и Модели обслуживаемых авто в СТО
+
+### /api/search/auto?search=_{STRING_SEARCH}_
+GET (Поиск подходящих марок и моделей по строке)
+```json
+отдает
+[
+  {
+    "markId": 58,
+    "modelId": 632,
+    "Mark": "Daewoo",
+    "Model": "\"Chairman\""
+  },
+  {
+    "markId": 58,
+    "modelId": 633,
+    "Mark": "Daewoo",
+    "Model": "\"Damas\""
+  },
+  {
+    "markId": 58,
+    "modelId": 636,
+    "Mark": "Daewoo",
+    "Model": "\"G2X\""
+  }
+]
+```
+
+
+### api/service-station/{stationId}/auto
+GET (Получаем справочник обслуживаемых марок и моделей авто)
+```json
+отдает
+200 Ok || 400 BadRequest
+```
+
+
+### api/service-station/{stationId}/auto/mark
+POST (Добавление марки авто в справочник СТО)
+Просто добаляем марку, никакие модели не добавляет.
+```json
+Получает
+{
+  "markId" : int
+}
+
+отдает
+200 Ok || 400 BadRequest
+```
+
+
+### api/service-station/{stationId}/auto/mark/{serviceMarkId}
+DELETE (Удаление марки авто в справочник СТО)  
+Удаляем марку и все модели каскадно в справочнике
+```json
+отдает
+200 Ok || 400 BadRequest
+```
+
+
+### api/service-station/{stationId}/auto/model
+POST (Добавление модели авто в справочник СТО)  
+Если в БД не существовало марки для этой модели,
+то марка привяжется к справочнику СТО автоматически.
+```json
+Получает
+{
+  "modelId" : int
+}
+
+отдает
+200 Ok || 400 BadRequest
+```
+
+
+### api/service-station/{stationId}/auto/model/{serviceMarkId}
+DELETE (Удаление модели авто в справочник СТО)
+Удаляем модель в справочнике
+```json
+отдает
+200 Ok || 400 BadRequest
+```
