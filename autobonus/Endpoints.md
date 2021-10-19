@@ -369,3 +369,148 @@ DELETE (Удаление модели авто в справочник СТО)
 отдает
 200 Ok || 400 BadRequest
 ```
+---
+# Сущности справочников
+## Справочник приложения МАРКИ (CRUD)
+### api/dicitonary/auto/mark
+POST (Добавление сущности в справочник)
+```json
+принимает
+{
+  "name": "string"
+}
+отдает
+200 Ok || 400 BadRequest
+```
+### api/dicitonary/auto/mark?_pageNumber_=1&_pageSize_=20
+GET (Получение сущностей из справочника с PAGINATION)
+```json
+отдает
+{
+  "pageNumber": 1,
+  "pageSize": 3,
+  "totalRecordCount": 288,
+  "records": [
+    {
+      "id": 1,
+      "name": "AC"
+    },
+    {
+      "id": 2,
+      "name": "Acura"
+    },
+    {
+      "id": 3,
+      "name": "Adler"
+    }
+  ]
+}
+```
+
+### api/dicitonary/auto/mark/{markId}
+GET (Получение одной сущности из справочника)
+```json
+отдает
+{
+  "id": 1,
+  "name": "AC"
+}
+```
+
+### api/dicitonary/auto/mark/{markId}
+PUT (Изменение сущности)
+```json
+Принимает
+{
+  "name": "string"
+}
+```
+
+### api/dicitonary/auto/mark/{markId}
+DELETE (Удаление сущности)
+```json
+отдает
+200 Ok || 400 BadRequest
+```
+
+---
+
+## Справочник приложения МОДЕЛИ (CRUD)
+### api/dicitonary/auto/model
+POST (Добавление сущности в справочник)
+```json
+принимает
+{
+  "markId": 0,
+  "name": "string"
+}
+отдает
+200 Ok || 400 BadRequest
+```
+### api/dicitonary/auto/model?_pageNumber_=1&_pageSize_=20
+GET (Получение сущностей из справочника с PAGINATION)
+```json
+отдает
+{
+  "pageNumber": 1,
+  "pageSize": 3,
+  "totalRecordCount": 3302,
+  "records": [
+    {
+      "id": 3,
+      "name": "\"Aceca\"",
+      "mark": {
+        "id": 1,
+        "name": "AC"
+      }
+    },
+    {
+      "id": 2,
+      "name": "\"Ace\"",
+      "mark": {
+        "id": 1,
+        "name": "AC"
+      }
+    },
+    {
+      "id": 1,
+      "name": "\"378 GT Zagato\"",
+      "mark": {
+        "id": 1,
+        "name": "AC"
+      }
+    }
+  ]
+}
+```
+
+### api/dicitonary/auto/model/{modelId}
+GET (Получение одной сущности из справочника)
+```json
+отдает
+{
+  "id": 567,
+  "name": "\"C4 Aircross\"",
+  "mark": {
+    "id": 51,
+    "name": "Citroen"
+  }
+}
+```
+
+### api/dicitonary/auto/model/{modelId}
+PUT (Изменение сущности)
+```json
+Принимает
+{
+  "markId": 0,
+  "name": "string"
+}
+```
+
+### api/dicitonary/auto/model/{modelId}
+DELETE (Удаление сущности)
+```json
+отдает
+200 Ok || 400 BadRequest
+```
