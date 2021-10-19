@@ -21,7 +21,7 @@ POST (Авторизация пользователя)
 отдает
 {
   "userId": int,
-  "userName": "string", 
+  "userName": "string",
   "token" : "string",
   "refreshToken": "string"
 }
@@ -108,7 +108,7 @@ POST (Регистрация Менеджера и организации)
 
 Если письмо подтверждения отправлено и валидация пройдена, то отдает
 {
-  "success" : "description"
+"success" : "description"
 }
 ```
 ### api/account/registration/manager-confirm
@@ -255,12 +255,12 @@ GET (Получение СТО или списка всех СТО)
 Если указать {stationId} отдает массив с одним элементом
 Например: /api/service-station/7 запрос отдает
 [
-    {
-    "id": 7,
-    "name": "СТО у Ашота",
-    "address": "г.Ставрополь, ул.Ленина 154",
-    "phoneNumber": "89123456789"
-    }
+{
+"id": 7,
+"name": "СТО у Ашота",
+"address": "г.Ставрополь, ул.Ленина 154",
+"phoneNumber": "89123456789"
+}
 ]
 ```
 
@@ -289,7 +289,7 @@ DELETE (удаление данных СТО)
 
 ## Справочник Марки и Модели обслуживаемых авто в СТО
 
-### /api/search/auto?search=_{STRING_SEARCH}_
+### /api/search/auto?search=_{STRING_SEARCH}_&_type_={ null || "mark" || "model" }
 GET (Поиск подходящих марок и моделей по строке)
 ```json
 отдает
@@ -372,7 +372,7 @@ DELETE (Удаление модели авто в справочник СТО)
 ---
 # Сущности справочников
 ## Справочник приложения МАРКИ (CRUD)
-### api/dicitonary/auto/mark
+### api/dictionary/auto/mark
 POST (Добавление сущности в справочник)
 ```json
 принимает
@@ -382,7 +382,7 @@ POST (Добавление сущности в справочник)
 отдает
 200 Ok || 400 BadRequest
 ```
-### api/dicitonary/auto/mark?_pageNumber_=1&_pageSize_=20
+### api/dictionary/auto/mark?_pageNumber_=1&_pageSize_=20
 GET (Получение сущностей из справочника с PAGINATION)
 ```json
 отдает
@@ -407,7 +407,7 @@ GET (Получение сущностей из справочника с PAGINA
 }
 ```
 
-### api/dicitonary/auto/mark/{markId}
+### api/dictionary/auto/mark/{markId}
 GET (Получение одной сущности из справочника)
 ```json
 отдает
@@ -417,7 +417,7 @@ GET (Получение одной сущности из справочника)
 }
 ```
 
-### api/dicitonary/auto/mark/{markId}
+### api/dictionary/auto/mark/{markId}
 PUT (Изменение сущности)
 ```json
 Принимает
@@ -426,7 +426,7 @@ PUT (Изменение сущности)
 }
 ```
 
-### api/dicitonary/auto/mark/{markId}
+### api/dictionary/auto/mark/{markId}
 DELETE (Удаление сущности)
 ```json
 отдает
@@ -436,7 +436,7 @@ DELETE (Удаление сущности)
 ---
 
 ## Справочник приложения МОДЕЛИ (CRUD)
-### api/dicitonary/auto/model
+### api/dictionary/auto/model
 POST (Добавление сущности в справочник)
 ```json
 принимает
@@ -447,7 +447,7 @@ POST (Добавление сущности в справочник)
 отдает
 200 Ok || 400 BadRequest
 ```
-### api/dicitonary/auto/model?_pageNumber_=1&_pageSize_=20
+### api/dictionary/auto/model?_pageNumber_=1&_pageSize_=20
 GET (Получение сущностей из справочника с PAGINATION)
 ```json
 отдает
@@ -484,7 +484,7 @@ GET (Получение сущностей из справочника с PAGINA
 }
 ```
 
-### api/dicitonary/auto/model/{modelId}
+### api/dictionary/auto/model/{modelId}
 GET (Получение одной сущности из справочника)
 ```json
 отдает
@@ -498,7 +498,7 @@ GET (Получение одной сущности из справочника)
 }
 ```
 
-### api/dicitonary/auto/model/{modelId}
+### api/dictionary/auto/model/{modelId}
 PUT (Изменение сущности)
 ```json
 Принимает
@@ -508,7 +508,76 @@ PUT (Изменение сущности)
 }
 ```
 
-### api/dicitonary/auto/model/{modelId}
+### api/dictionary/auto/model/{modelId}
+DELETE (Удаление сущности)
+```json
+отдает
+200 Ok || 400 BadRequest
+```
+
+
+## Справочник приложения РАБОТЫ/УСЛУГИ (CRUD)
+### api/dictionary/work
+POST (Добавление сущности в справочник)
+```json
+принимает
+{
+  "name": "string",
+  "description": "string"
+}
+отдает
+200 Ok || 400 BadRequest
+```
+### api/dictionary/work?_pageNumber_=1&_pageSize_=20
+GET (Получение сущностей из справочника с PAGINATION)
+```json
+отдает
+{
+  "pageNumber": 1,
+  "pageSize": 20,
+  "totalRecordCount": 3,
+  "records": [
+    {
+      "id": 1,
+      "name": "Капитальный ремонт двигателя",
+      "description": "Замена двигателя!"
+    },
+    {
+      "id": 2,
+      "name": "Замена масла",
+      "description": "Быстрая процедура, займет 30 минут"
+    },
+    {
+      "id": 3,
+      "name": "Покраска авто",
+      "description": "Покрасим ваше авто в любой цвет."
+    }
+  ]
+}
+```
+
+### api/dictionary/work/{modelId}
+GET (Получение одной сущности из справочника)
+```json
+отдает
+{
+  "id": 2,
+  "name": "Замена масла",
+  "description": "Быстрая процедура, займет 30 минут"
+}
+```
+
+### api/dictionary/work/{modelId}
+PUT (Изменение сущности)
+```json
+Принимает
+{
+  "name": "string",
+  "description": "string"
+}
+```
+
+### api/dictionary/work/{modelId}
 DELETE (Удаление сущности)
 ```json
 отдает
