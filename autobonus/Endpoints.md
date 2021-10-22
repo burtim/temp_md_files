@@ -702,6 +702,44 @@ GET (Полная и подробная информация о ремонте)
 }
 ```
 
+### /api/station/{stationId}/repair/preview
+GET (Preview (Количество заявок по статусам (ПЛАШКА)))
+```json
+отдает
+[
+  {
+    "count": 3,
+    "id": 1,
+    "name": "new",
+    "alias": "Новая заявка"
+  },
+  {
+    "count": 12,
+    "id": 2,
+    "name": "record",
+    "alias": "Запись на ремонт"
+  },
+  {
+    "count": 1,
+    "id": 3,
+    "name": "work",
+    "alias": "Заявка в работе"
+  },
+  {
+    "count": 7,
+    "id": 4,
+    "name": "closed",
+    "alias": "Заявка обработана"
+  },
+  {
+    "count": 4,
+    "id": 5,
+    "name": "canceled",
+    "alias": "Заявка отменена"
+  }
+]
+```
+
 ### api/station/{stationId}/repair?pageNumber=1&pageSize=20;filter={STATUS_NAME || NULL}
 GET (Получить заявки СТО с пагинацией и фильтрацией (тут не полная инфа о заявке, модель для таблицы))
 ```json
