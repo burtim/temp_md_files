@@ -612,3 +612,229 @@ GET (Получить все статусы заявок)
   }
 ]
 ```
+---
+## ЗАЯВКИ НА РЕМОНТЫ
+### api/repair
+POST (Создать заявку на ремонт)
+```json
+принимает
+{
+  "description": "string",
+  "clientId": 0,
+  "autoId": 0,
+  "stationId": 0
+}
+отдает
+200 Ok || 400 BadRequest
+```
+
+### api/repair/{repairId}
+PUT (Изменить заявку (поменять статус или описание или время окончания))
+```json
+принимает
+{
+  "endTime": "2021-10-23T16:51:25.479Z",
+  "description": "string",
+  "statusId": 0
+}
+отдает
+200 Ok || 400 BadRequest
+```
+
+### api/repair/{repairId}
+DELETE (Удалить заявку)
+```json
+отдает
+200 Ok || 400 BadRequest
+```
+### api/repair/{repairId}
+GET (Полная и подробная информация о ремонте)
+```json
+отдает
+{
+  "id": 1,
+  "createdTime": "2021-10-22T09:38:57.67627",
+  "description": "Двигатель не заводится",
+  "client": {
+    "clientId": 1,
+    "email": "gawadi5940@bomoads.com",
+    "firstName": "Тимофей",
+    "lastName": "Буркуш",
+    "patronymic": "Эдуардович"
+  },
+  "auto": {
+    "createdTime": "2021-10-22T12:37:40.392671",
+    "registrationNumber": "Е001КХ26",
+    "mileAge": 1000,
+    "id": 1,
+    "mark": "Lulya",
+    "model": "Kebab",
+    "year": 2025,
+    "vin": "123456235904223534"
+  },
+  "status": {
+    "id": 1,
+    "name": "new",
+    "alias": "Новая заявка"
+  },
+  "details": [
+    {
+      "id": 1,
+      "repairId": "1",
+      "work": {
+        "id": 2,
+        "name": "Замена лобового стекла",
+        "description": "Описание замена лобового стекла"
+      },
+      "description": "Делов на пару сек"
+    },
+    {
+      "id": 2,
+      "repairId": "1",
+      "work": {
+        "id": 3,
+        "name": "Замена колеса",
+        "description": "Описание замена колеса"
+      },
+      "description": "Иваныч долго мудохался с этим"
+    }
+  ]
+}
+```
+
+### api/station/{stationId}/repair?pageNumber=1&pageSize=20;filter={STATUS_NAME || NULL}
+GET (Получить заявки СТО с пагинацией и фильтрацией (тут не полная инфа о заявке, модель для таблицы))
+```json
+{
+  "pageNumber": 1,
+  "pageSize": 20,
+  "totalRecordCount": 2,
+  "records": [
+    {
+      "id": 5,
+      "createdTime": "2021-10-22T06:40:41.917939",
+      "status": {
+        "id": 1,
+        "name": "new",
+        "alias": "Новая заявка"
+      },
+      "description": "Что-то стучит",
+      "auto": {
+        "id": 4,
+        "mark": "BURTIMAX",
+        "model": "Kalina",
+        "year": 0,
+        "vin": "11111111111111111"
+      }
+    },
+    {
+      "id": 6,
+      "createdTime": "2021-10-22T06:44:17.219483",
+      "status": {
+        "id": 3,
+        "name": "work",
+        "alias": "Заявка в работе"
+      },
+      "description": "проблема в двигателе",
+      "auto": {
+        "id": 5,
+        "mark": "Lulya",
+        "model": "Kebab",
+        "year": 2025,
+        "vin": "123456235904223534"
+      }
+    }
+  ]
+}
+```
+---
+
+## ДЕТАЛИЗАЦИЯ РЕМОНТА (УСЛУГИ И РАБОТЫ РЕМОНТА)
+### api/repair/{repairId}/detail
+POST (Добавить услугу/работу в ремонт)
+```json
+принимает
+{
+  "workId": 0, //из справочника
+  "description": "string"
+}
+отдает
+200 Ok || 400 BadRequest
+```
+
+### api/repair/{repairId}/detail/{detailId}
+DELETE (Удалить услугу/работу из ремонта)
+```json
+отдает
+200 Ok || 400 BadRequest
+```
+
+### api/repair/{repairId}/detail/{detailId}
+PUT (Изменить услугу/работу в ремонте)
+```json
+принимает
+{
+  "workId": 0,
+  "description": "string"
+}
+отдает
+200 Ok || 400 BadRequest
+```
+---
+
+## АВТО CRUD
+### api/auto
+POST (Добавить авто)
+```json
+принимает
+{
+  "mark": "string",
+  "model": "string",
+  "year": 0,
+  "vin": "string",
+  "registrationNumber": "string",
+  "mileAge": 0
+}
+отдает
+200 Ok || 400 BadRequest
+```
+
+### api/auto/{autoId}
+GET (Получить авто)
+```json
+отдает
+{
+  "createdTime": "2021-10-22T12:40:11.979135",
+  "registrationNumber": "Е777КХ777",
+  "mileAge": 35000,
+  "id": 2,
+  "mark": "Toyota",
+  "model": "Carolla",
+  "year": 2020,
+  "vin": "123456211111223534"
+}
+```
+
+### api/auto/{autoId}
+PUT (Изменить авто)
+```json
+принимает
+{
+  "id": 0,
+  "mark": "string",
+  "model": "string",
+  "year": 0,
+  "vin": "string",
+  "registrationNumber": "string",
+  "mileAge": 0
+}
+отдает
+200 || 400
+```
+
+### api/auto/{autoId}
+DELETE (Удалить авто)
+```json
+отдает
+200 || 400
+```
