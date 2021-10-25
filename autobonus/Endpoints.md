@@ -915,3 +915,81 @@ DELETE (Удалить авто)
 отдает
 200 || 400
 ```
+
+---
+
+## ПРИВЯЗКА АВТО К КЛИЕНТУ (УПРАВЛЕНИЕ)
+### api/client/{clientId}/auto
+POST (Добавить авто и привязать к клиенту)
+```json
+принимает
+{
+  "mark": "Tesla",
+  "model": "Model X",
+  "year": 2020,
+  "vin": "12345671237654321",
+  "registrationNumber": "Н543ЕР126",
+  "mileAge": 30000
+}
+отдает
+200 Ok || 400 BadRequest
+```
+
+### api/client/{clientId}/auto
+GET (Получить все авто клиента)
+```json
+отдает
+[
+  {
+    "createdTime": "2021-10-21T15:14:26.834902",
+    "registrationNumber": "Т003ИМ126",
+    "mileAge": 40000,
+    "id": 4,
+    "mark": "BURTIMAX",
+    "model": "Kalina",
+    "year": 0,
+    "vin": "11111111111111111"
+  },
+  {
+    "createdTime": "2021-10-22T09:41:23.645615",
+    "registrationNumber": "Е001КХ26",
+    "mileAge": 1000,
+    "id": 5,
+    "mark": "Lulya",
+    "model": "Kebab",
+    "year": 2025,
+    "vin": "123456235904223534"
+  }
+]
+```
+
+### api/client/{clientId}/auto/{autoId}
+GET (Получить авто клиента)
+```json
+отдает
+{
+    "createdTime": "2021-10-21T15:14:26.834902",
+    "registrationNumber": "Т003ИМ126",
+    "mileAge": 40000,
+    "id": 4,
+    "mark": "BURTIMAX",
+    "model": "Kalina",
+    "year": 0,
+    "vin": "11111111111111111"
+}
+```
+
+### api/client/{clientId}/auto/{autoId}
+PUT (Привязка существующего авто к клиенту)
+```json
+отдает
+200 || 400
+```
+
+### api/client/{clientId}/auto/{autoId}
+DELETE (Отвязка авто от клиента)
+```json
+отдает
+200 || 400
+```
+---
