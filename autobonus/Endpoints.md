@@ -691,51 +691,52 @@ GET (Полная и подробная информация о ремонте)
 ```json
 отдает
 {
-  "id": 1,
-  "createdTime": "2021-10-22T09:38:57.67627",
-  "description": "Двигатель не заводится",
+  "id": 5,
+  "createdTime": "2021-10-22T06:40:41.917939",
+  "description": "Что-то стучит",
   "client": {
-    "clientId": 1,
-    "email": "gawadi5940@bomoads.com",
-    "firstName": "Тимофей",
-    "lastName": "Буркуш",
+    "clientId": 2,
+    "email": "timofeyburkush@gmail.com",
+    "phoneNumber": "89187525678",
+    "firstName": "Timofey",
+    "lastName": "Burkush",
     "patronymic": "Эдуардович"
   },
   "auto": {
-    "createdTime": "2021-10-22T12:37:40.392671",
-    "registrationNumber": "Е001КХ26",
-    "mileAge": 1000,
-    "id": 1,
-    "mark": "Lulya",
-    "model": "Kebab",
-    "year": 2025,
-    "vin": "123456235904223534"
+    "createdTime": "2021-10-21T15:14:26.834902",
+    "registrationNumber": "Т003ИМ126",
+    "mileAge": 40000,
+    "id": 4,
+    "mark": "BURTIMAX",
+    "model": "Kalina",
+    "year": 0,
+    "vin": "11111111111111111"
   },
   "status": {
-    "id": 1,
-    "name": "new",
-    "alias": "Новая заявка"
+    "id": 4,
+    "name": "closed",
+    "alias": "Заявка обработана"
   },
   "details": [
     {
-      "id": 1,
-      "repairId": "1",
+      "id": 4,
+      "repairId": "5",
       "work": {
-        "id": 2,
-        "name": "Замена лобового стекла",
-        "description": "Описание замена лобового стекла"
+        "id": 1,
+        "name": "Капитальный ремонт двигателя",
+        "description": "Замена двигателя!"
       },
-      "description": "Делов на пару сек"
+      "description": "Сделал мастер Александр"
     },
     {
-      "id": 2,
-      "repairId": "1",
+      "id": 3,
+      "repairId": "5",
       "work": {
-        "id": 3,
-        "name": "Замена колеса",
-        "description": "Описание замена колеса"
+        "id": 2,
+        "name": "Замена масла",
+        "description": "Быстрая процедура, займет 30 минут"
       },
-      "description": "Иваныч долго мудохался с этим"
+      "description": "Иваныч долго работал с этим"
     }
   ]
 }
