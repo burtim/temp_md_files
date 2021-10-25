@@ -993,3 +993,71 @@ DELETE (Отвязка авто от клиента)
 200 || 400
 ```
 ---
+
+## AUTO HISTORY
+### api/auto/{autoId}/repair-history
+POST (Получить историю ремонтов автомобиля (получает полную информацию о каждом ремонте авто!))
+```json
+отдает
+[
+  {
+    "id": 5,
+    "createdTime": "2021-10-22T06:40:41.917939",
+    "description": "Что-то стучит",
+    "client": {
+      "clientId": 2,
+      "email": "timofeyburkush@gmail.com",
+      "firstName": "Timofey",
+      "lastName": "Burkush",
+      "patronymic": "Эдуардович"
+    },
+    "auto": {
+      "createdTime": "2021-10-21T15:14:26.834902",
+      "registrationNumber": "Т003ИМ126",
+      "mileAge": 40000,
+      "id": 4,
+      "mark": "BURTIMAX",
+      "model": "Kalina",
+      "year": 0,
+      "vin": "11111111111111111"
+    },
+    "status": {
+      "id": 4,
+      "name": "closed",
+      "alias": "Заявка обработана"
+    },
+    "details": []
+  }
+]
+```
+
+### api/auto/{autoId}/owner-history
+POST (Получить историю владельцев автомобиля)
+```json
+отдает
+[
+  {
+    "startTime": "2021-10-25T08:03:58.064185",
+    "userId": 2,
+    "userFirstName": "Timofey",
+    "userLastName": "Burkush",
+    "userPatronymic": "Эдуардович",
+    "autoId": 7,
+    "autoMark": "Tesla",
+    "autoModel": "Model X",
+    "autoVIN": "12345671237654321"
+  },
+  {
+    "startTime": "2021-10-25T07:59:59.814112",
+    "endTime": "2021-10-25T08:03:58.064185",
+    "userId": 2,
+    "userFirstName": "Timofey",
+    "userLastName": "Burkush",
+    "userPatronymic": "Эдуардович",
+    "autoId": 7,
+    "autoMark": "Tesla",
+    "autoModel": "Model X",
+    "autoVIN": "12345671237654321"
+  }
+]
+```
