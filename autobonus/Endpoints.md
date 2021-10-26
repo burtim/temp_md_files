@@ -394,8 +394,9 @@ POST (Добавление сущности в справочник)
 отдает
 200 Ok || 400 BadRequest
 ```
-### api/dictionary/auto/mark?_pageNumber_=1&_pageSize_=20&name={SEARCH_NAME}
+### api/dictionary/auto/mark?_pageNumber_=1&_pageSize_=20&name={SEARCH_NAME}&getAll={true || false}
 GET (Получение сущностей из справочника с PAGINATION и поиском)
+Параметр getAll отключает пагинацию и возвращает все элементы.
 ```json
 отдает
 {
