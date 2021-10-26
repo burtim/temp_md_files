@@ -328,33 +328,6 @@ DELETE (удаление данных СТО)
 
 ## Справочник Марки и Модели обслуживаемых авто в СТО
 
-### /api/search/auto?search=_{STRING_SEARCH}_&_type_={ null || "mark" || "model" }
-GET (Поиск подходящих марок и моделей по строке)
-```json
-отдает
-[
-  {
-    "markId": 58,
-    "modelId": 632,
-    "Mark": "Daewoo",
-    "Model": "\"Chairman\""
-  },
-  {
-    "markId": 58,
-    "modelId": 633,
-    "Mark": "Daewoo",
-    "Model": "\"Damas\""
-  },
-  {
-    "markId": 58,
-    "modelId": 636,
-    "Mark": "Daewoo",
-    "Model": "\"G2X\""
-  }
-]
-```
-
-
 ### api/service-station/{stationId}/auto
 GET (Получаем справочник обслуживаемых марок и моделей авто)
 ```json
@@ -421,8 +394,8 @@ POST (Добавление сущности в справочник)
 отдает
 200 Ok || 400 BadRequest
 ```
-### api/dictionary/auto/mark?_pageNumber_=1&_pageSize_=20
-GET (Получение сущностей из справочника с PAGINATION)
+### api/dictionary/auto/mark?_pageNumber_=1&_pageSize_=20&name={SEARCH_NAME}
+GET (Получение сущностей из справочника с PAGINATION и поиском)
 ```json
 отдает
 {
@@ -486,8 +459,12 @@ POST (Добавление сущности в справочник)
 отдает
 200 Ok || 400 BadRequest
 ```
-### api/dictionary/auto/model?_pageNumber_=1&_pageSize_=20
-GET (Получение сущностей из справочника с PAGINATION)
+### api/dictionary/auto/model?_pageNumber_=1&_pageSize_=20&name={SEARCH_NAME}&searchType={NULL || "full"}
+GET (Получение сущностей из справочника с PAGINATION и посиском)
+Параметр name - строка поиска.  
+Поиск моделей делится на два типа:  
+1) Поиск только по моделям (default)
+2) Полный поиск по марке и модели авто (searchType = full)
 ```json
 отдает
 {
