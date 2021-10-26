@@ -544,8 +544,8 @@ POST (Добавление сущности в справочник)
 отдает
 200 Ok || 400 BadRequest
 ```
-### api/dictionary/work?_pageNumber_=1&_pageSize_=20
-GET (Получение сущностей из справочника с PAGINATION)
+### api/dictionary/work?_pageNumber_=1&_pageSize_=20&name={SEARCH_NAME}
+GET (Получение сущностей из справочника с PAGINATION и поиском)
 ```json
 отдает
 {
