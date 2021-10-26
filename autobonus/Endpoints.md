@@ -460,12 +460,14 @@ POST (Добавление сущности в справочник)
 отдает
 200 Ok || 400 BadRequest
 ```
-### api/dictionary/auto/model?_pageNumber_=1&_pageSize_=20&name={SEARCH_NAME}&searchType={NULL || "full"}
+### api/dictionary/auto/model?_pageNumber_=1&_pageSize_=20&name={SEARCH_NAME}&searchType={NULL || "full"}&markId={MARK_ID}
 GET (Получение сущностей из справочника с PAGINATION и посиском)
 Параметр name - строка поиска.  
 Поиск моделей делится на два типа:  
 1) Поиск только по моделям (default)
-2) Полный поиск по марке и модели авто (searchType = full)
+2) Полный поиск по марке и модели авто (searchType = full)  
+Параметр MarkId отдает все модели по марке, игнорируя параметры поиска.   
+Параметр getAll игнорирует пагинацию и возвращает все элементы по заданным параметрам
 ```json
 отдает
 {
