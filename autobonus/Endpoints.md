@@ -877,51 +877,57 @@ GET (Получить историю всех ремонтов всех авто
     "lastName": "Burkush",
     "patronymic": "Эдуардович"
   },
-  "autoRepairsList": [
+  "repairs": [
     {
-      "auto": {
-        "createdTime": "2021-10-21T15:14:26.834902",
-        "registrationNumber": "Т003ИМ126",
-        "mileAge": 40000,
-        "id": 4,
-        "mark": "BURTIMAX",
-        "model": "Kalina",
-        "year": 0,
-        "vin": "11111111111111111"
+      "id": 8,
+      "createdTime": "2021-10-28T09:46:51.783331",
+      "status": {
+        "id": 1,
+        "name": "new",
+        "alias": "Новая заявка"
       },
-      "repairs": [
-        {
-          "id": 5,
-          "createdTime": "2021-10-22T06:40:41.917939",
-          "description": "Что-то стучит"
-        }
-      ]
-    },
-    {
+      "description": "Вмятина на лувом переднем крыле",
       "auto": {
-        "createdTime": "2021-10-22T09:41:23.645615",
-        "registrationNumber": "Е001КХ26",
-        "mileAge": 1000,
         "id": 5,
         "mark": "Lulya",
         "model": "Kebab",
         "year": 2025,
         "vin": "123456235904223534"
-      },
-      "repairs": []
+      }
     },
     {
-      "auto": {
-        "createdTime": "2021-10-25T10:52:28.053297",
-        "registrationNumber": "Н543ЕР126",
-        "mileAge": 30000,
-        "id": 7,
-        "mark": "Tesla",
-        "model": "Model X",
-        "year": 2020,
-        "vin": "12345671237654321"
+      "id": 7,
+      "createdTime": "2021-10-28T09:37:58.951473",
+      "status": {
+        "id": 1,
+        "name": "new",
+        "alias": "Новая заявка"
       },
-      "repairs": []
+      "description": "Колесо спустило",
+      "auto": {
+        "id": 4,
+        "mark": "BURTIMAX",
+        "model": "Kalina",
+        "year": 0,
+        "vin": "11111111111111111"
+      }
+    },
+    {
+      "id": 5,
+      "createdTime": "2021-10-22T06:40:41.917939",
+      "status": {
+        "id": 4,
+        "name": "closed",
+        "alias": "Заявка обработана"
+      },
+      "description": "Что-то стучит",
+      "auto": {
+        "id": 4,
+        "mark": "BURTIMAX",
+        "model": "Kalina",
+        "year": 0,
+        "vin": "11111111111111111"
+      }
     }
   ]
 }
