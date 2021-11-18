@@ -346,6 +346,47 @@ GET (api/1c/loyalty/operation/history?pageNumber=1&pageSize=20&clientId=2&statio
 }
 ```
 
+## Добавление профиля клиента
+
+### Добавить всю информацию о клиенте в одном запросе.
+Добавить ФИО, Автомобили, Телефон, Email, Стартовый баланс по счету лояльности.
+POST (api/1c/client?stationId={STATION_ID}&clientId={ClientId})
+```json
+//Принимает
+{
+  "firstName" : "string",
+  "lastName" : "string",
+  "patronymic" : "string",
+  "email" : "string",
+  "phoneNumber" : "string",
+  "startBalance" : 0,
+  "autos" : [
+    {
+      "mark": "string", //*** Марка авто (производитель)
+      "model": "string", //*** Модель авто
+      "year": 0, //Год производства
+      "vin": "string", //*** VIN
+      "registrationNumber": "string", //регистрационный номер
+      "mileAge": 0, //Пробег авто
+    },
+    {
+      "mark": "string", //*** Марка авто (производитель)
+      "model": "string", //*** Модель авто
+      "year": 0, //Год производства
+      "vin": "string", //*** VIN
+      "registrationNumber": "string", //регистрационный номер
+      "mileAge": 0, //Пробег авто
+    }
+  ]
+}
+
+
+//В случае ошибки отдает код 400 и результат
+{
+  "description" : "string"
+}
+```
+
 ## Авторизация для работы с сервисом  
 > Прежде чем отправлять запросы сервису, необходимо авторизоваться.  
 > Авторизация основана на JWT токенах.  
