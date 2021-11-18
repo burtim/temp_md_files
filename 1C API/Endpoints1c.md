@@ -359,14 +359,14 @@ GET (api/1c/loyalty/operation/history?pageNumber=1&pageSize=20&clientId=2&statio
 Добавить ФИО, Автомобили, Телефон, Email, Стартовый баланс по счету лояльности.
 POST (api/1c/client?stationId={STATION_ID}&clientId={ClientId})
 ```json
-//Принимает
+//Принимает (Все поля необязательны, какая информация придет, такую и сохраним.)
 {
-  "firstName" : "string",
-  "lastName" : "string",
-  "patronymic" : "string",
-  "email" : "string",
-  "phoneNumber" : "string",
-  "startBalance" : 0,
+  "firstName" : "string", //Имя
+  "lastName" : "string", //Фамилия
+  "patronymic" : "string", //Отчество
+  "email" : "string", //Емайл
+  "phoneNumber" : "string", //Телефон
+  "startBalance" : 0, //Начислить стартовые баллы на счет лояльности 
   "autos" : [
     {
       "mark": "string", //*** Марка авто (производитель)
