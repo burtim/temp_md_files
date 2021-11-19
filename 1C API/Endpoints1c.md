@@ -261,6 +261,23 @@ GET (api/1c/request/new?stationId={STATION_ID})
 ```
 ## Операции по программе лояльности
 
+### Получить настройки программы лояльности СТО
+GET (api/1c/loyalty/settings?stationId={STATION_ID})
+```json
+//Удачная операция отдает код 200
+{
+  "stationId": 3,
+  "debitPercent": 20,
+  "creditPercent": 10,
+  "lifeDays": 7
+}
+
+//В случае ошибки отдает код 400 и результат
+{
+  "description" : "string"
+}
+```
+
 ### Получить баланс счета лояльности клиента для СТО.
 GET (api/1c/loyalty/balance?stationId={STATION_ID}&clientId={ClientId})
 ```json
