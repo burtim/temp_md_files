@@ -3,7 +3,7 @@
 ## Процедуры с автомобилями
 
 ### Добавить автомобиль и привязать к владельцу. ClientId сообщает сам клиент.
-POST (api/1c/auto)
+POST (api/1c/auto?stationId={STATION_ID})
 ```json lines
 //принимает
 {
@@ -33,7 +33,7 @@ POST (api/1c/auto)
 ```
 
 ### Получить автомобили клиента или автомобиль
-GET (api/1c/auto?clientId={CLIENT_ID}&autoId={AUTO_ID})
+GET (api/1c/auto?stationId={STATION_ID}&clientId={CLIENT_ID}&autoId={AUTO_ID})
 ```json
 //Удачная операция отдает код 200 и результат (не все параметры могут прийти! Например, нет отчества или клиент не заполнил имя и фамилию)
   [
@@ -77,7 +77,7 @@ GET (api/1c/auto?clientId={CLIENT_ID}&autoId={AUTO_ID})
 
 
 ### Изменить характеристики авто.
-PUT (api/1c/auto/{autoId})
+PUT (api/1c/auto?stationId={STATION_ID}&autoId={AUTO_ID})
 > Поля необязательны, следует отправлять только изменяемые поля
 ```json
 //принимает
@@ -107,7 +107,7 @@ PUT (api/1c/auto/{autoId})
 ```
 
 ### Удалить авто
-PUT (api/1c/auto/{autoId})
+PUT (api/1c/auto?stationId={STATION_ID}&autoId={AUTO_ID})
 ```json
 //Удачная операция отдает код 200
 
@@ -119,7 +119,7 @@ PUT (api/1c/auto/{autoId})
 
 ### Передать авто другому 
 клиенту
-PUT (api/1c/auto/bind?autoId={AUTO_ID}&clientId={CLIENT_ID})
+PUT (api/1c/auto/bind?stationId={STATION_ID}autoId={AUTO_ID}&clientId={CLIENT_ID})
 ```json
 //Удачная операция отдает код 200
 
@@ -139,7 +139,7 @@ PUT (api/1c/auto/bind?autoId={AUTO_ID}&clientId={CLIENT_ID})
 
 
 ### Получить владельца (клиента)
-GET (api/1c/client/{clientId})
+GET (api/1c/client?stationId={STATION_ID}&clientId={CLIENT_ID})
 ```json
 //Отдает 200 и
   {
@@ -283,7 +283,8 @@ GET (api/1c/loyalty/balance?stationId={STATION_ID}&clientId={ClientId})
 ```json
 //Удачная операция отдает код 200
 {
-  "balance" : 0
+  "date": "2021-11-19T00:00:00+03:00",
+  "balance": 0
 }
 
 //В случае ошибки отдает код 400 и результат
