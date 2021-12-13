@@ -31,7 +31,7 @@ POST (api/1c/auto?stationId={STATION_ID})
 ```
 
 ### Получить автомобили клиента или автомобиль
-GET (api/1c/auto?stationId={STATION_ID}&clientId={CLIENT_ID}&autoId={AUTO_ID})
+GET (api/1c/auto?stationId={STATION_ID}&clientId={CLIENT_ID}&vin={AUTO_VIN})
 ```json
 //Удачная операция отдает код 200 и результат (не все параметры могут прийти!)
   [
@@ -72,7 +72,7 @@ GET (api/1c/auto?stationId={STATION_ID}&clientId={CLIENT_ID}&autoId={AUTO_ID})
 
 
 ### Изменить характеристики авто.
-PUT (api/1c/auto?stationId={STATION_ID}&autoId={AUTO_ID})
+PUT (api/1c/auto?stationId={STATION_ID}&vin={AUTO_VIN})
 > Поля необязательны, следует отправлять только изменяемые поля
 ```json
 //принимает
@@ -100,7 +100,7 @@ PUT (api/1c/auto?stationId={STATION_ID}&autoId={AUTO_ID})
 ```
 
 ### Удалить авто
-PUT (api/1c/auto?stationId={STATION_ID}&autoId={AUTO_ID})
+PUT (api/1c/auto?stationId={STATION_ID}&vin={AUTO_VIN})
 ```json
 //Удачная операция отдает код 200
 
@@ -109,7 +109,7 @@ PUT (api/1c/auto?stationId={STATION_ID}&autoId={AUTO_ID})
 
 ### Передать авто другому 
 клиенту
-PUT (api/1c/auto/bind?stationId={STATION_ID}autoId={AUTO_ID}&clientId={CLIENT_ID})
+PUT (api/1c/auto/bind?stationId={STATION_ID}&vin={AUTO_VIN}&clientId={CLIENT_ID})
 ```json
 //Удачная операция отдает код 200
 
@@ -155,6 +155,7 @@ POST (api/1c/repair/send)
   "vin" : "string", //VIN авто
   "stationId" : "string", //Идентификатор СТО
   "documentId" : "string", //Уникальный идентификатор документа
+  "totalSum" : 0, //Общая сумма ремонта
   "comment" : "string", //комментарий к заказ-наряду
   "mileAge" : 0, //пробег
   "materials" : [ //табличная часть (товары или материалы)
@@ -163,14 +164,16 @@ POST (api/1c/repair/send)
       "vendorCode" : "string", //артикул товара
       "manufacturer" : "string", //производитель
       "amount" : 0, //количество
-      "price" : 0 //цена
+      "price" : 0, //цена товара (материала)
+      "sum" : 0 //Конечная стоимость товара
     },
     {
       "name" : "string", //наименование товара
       "vendorCode" : "string", //артикул товара
       "manufacturer" : "string", //производитель
       "amount" : 0, //количество
-      "price" : 0 //цена товара (материала)
+      "price" : 0, //цена товара (материала)
+      "sum" : 0 //Конечная стоимость товара
     },
     ... //Другие товары
   ],
@@ -179,13 +182,15 @@ POST (api/1c/repair/send)
       "name" : "string", //наименование работы
       "amount" : 0, //количество
       "coefficient" : 0.5, //коэффициент
-      "price" : "string" //цена работы
+      "price" : 0, //цена работы
+      "sum" : 0 //Конечная стоимость работы
     },
     {
       "name" : "string", //наименование работы
       "amount" : 0, //количество
       "coefficient" : 0.5, //коэффициент
-      "price" : "string" //цена работы
+      "price" : 0, //цена работы
+      "sum" : 0 //Конечная стоимость работы
     },
     ... //Другие работы
   ]
@@ -237,6 +242,18 @@ GET (api/1c/request/new?stationId={STATION_ID})
     ...
 ]
 ```
+
+### Создание заявки на ремонт.
+GET (api/1c/request/new?stationId={STATION_ID})
+```json
+{
+    "description" : "string",
+    "clientId" : 0,
+    "vin" : "string"
+}
+```
+
+
 ## Операции по программе лояльности
 
 ### Получить настройки программы лояльности СТО
